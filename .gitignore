@@ -1,1 +1,96 @@
 env.ini
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs e editores
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Logs e arquivos temporários
+*.log
+*.tmp
+*.swp
+*.bak
+*.old
+
+# Arquivos de cache
+cache/
+tmp/
+temp/
+*.cache
+
+# Arquivos de upload temporário
+uploads/tmp/
+uploads/*.tmp
+
+# Banco de dados local
+*.sqlite
+*.db
+*.sql
+*.sql.gz
+
+# Arquivos de configuração sensíveis
+.env
+.env.*
+config.php
+config/*.php
+settings.php
+
+# Composer (caso esteja usando mesmo sem framework)
+vendor/
+composer.lock
+
+# PHPUnit (caso use testes)
+phpunit.xml
+phpunit.xml.dist
+coverage/
+
+# Relatórios e arquivos gerados
+*.tar.gz
+*.zip
+*.7z
+*.rar
+
+# Diretórios de build
+dist/
+build/
+
+# Arquivos de deploy
+.deploy/
+*.tar
+*.tgz
+
+# Outros arquivos ocultos
+.htaccess
+*.bak
+*.orig
+
+# NodeJS (se usar ferramentas frontend)
+node_modules/
+package-lock.json
+yarn.lock
+
+# SASS/SCSS compilados
+*.css.map
+*.scssc
+*.sassc
+
+# Imagens otimizadas
+*.webp
+*.avif
+
+# Arquivos pessoais ou de testes locais
+*.local.php
+*.dev.php
+test.php
+tests/
+
+# Certificados e chaves privadas (em dev/teste)
+*.pem
+*.crt
+*.key
