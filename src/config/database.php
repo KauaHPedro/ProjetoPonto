@@ -21,4 +21,12 @@ class Database {
         return $pdo;
 
     }
+
+    public static function getResultFromQuery($query, $params = []) {
+        $pdo = self::getConnection();
+        $stmt = $pdo->prepare($query);
+        $stmt->execute($params);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    }
 }
