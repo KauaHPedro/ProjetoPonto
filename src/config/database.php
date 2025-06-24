@@ -29,4 +29,11 @@ class Database {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     }
+
+    public static function executeNonQuery($query, $params = []) {
+        $pdo = self::getConnection();
+        $stmt = $pdo->prepare($query);
+        $stmt->execute($params);
+        return $stmt->rowCount();
+    }
 }
