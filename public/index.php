@@ -6,27 +6,8 @@ error_reporting(E_ALL);
 
 
 require_once(dirname(__FILE__, 2) . '/src/config/config.php');
+require_once(dirname(__FILE__, 2) . '/src/models/User.php');
 
-$query = "SELECT * FROM users";
-$users = Database::getResultFromQuery($query);
+$user = new User(["name" => "Kauã", "idade" => 19]);
 
-foreach ($users as $user) {
-    echo $user['name'] . '<br>';
-}
-
-//$delete = "DELETE FROM users WHERE id IN (:id, :id2, :id3)";
-//$params = [
-//    ':id' => 6,
-//    ':id2' => 11,
-//    ':id3' => 12
-//];
-//
-//$rows = Database::executeNonQuery($delete, $params);
-//
-//if ($rows > 0) {
-//    echo "Success";
-//    echo "<br>";
-//    echo "Rows affected: " . $rows . "<br>";
-//} else {
-//    echo "Error";
-//}
+echo User::getSelect(["name" => "Kauã", "idade" => 21], "nome, idade, cpf");
