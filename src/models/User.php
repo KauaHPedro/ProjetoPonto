@@ -11,4 +11,8 @@ class User extends Model {
         "end_date",
         "is_admin"
     ];
+
+    public function testandoInstancia() {
+        echo "Testando instancia";
+    }
 }

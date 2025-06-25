@@ -25,10 +25,33 @@ class Model {
         $this->values[$key] = $value;
     }
 
-    public static function getSelect($filters = [], $columns = "*") {
-        return "SELECT {$columns} FROM "
+    public static function get($filters = [], $columns = "*") {
+        $objects = [];
+        $result = static::getResultFromSelect($filters, $columns);
+
+        if($result) {
+            $class = get_called_class();
+            foreach ($result as $arr) {
+                $objects[] = new $class($arr);
+            }
+        }
+
+        return $objects;
+    }
+
+    public static function getResultFromSelect($filters = [], $columns = "*") {
+        $sql = "SELECT {$columns} FROM "
             . static::$tableName
             . static::makeWhere($filters);
+
+        $result = Database::getResultFromQuery($sql);
+
+    if (count($result) > 0) {
+        return $result;
+    } else {
+        return null;
+    }
+
     }
 
     private static function makeWhere($filters) {
@@ -36,10 +59,21 @@ class Model {
         if(count($filters) > 0) {
             $sql .= " WHERE 1 = 1";
             foreach ($filters as $key => $value) {
-                $sql .= " AND {$key} = '{$value}'";
+                $sql .= " AND {$key} = " .
+                static::getFormatedValue($value);
             }
         }
 
         return $sql;
+    }
+
+    private static function getFormatedValue($value) {
+        if (is_null($value)) {
+            return 'null';
+        } elseif (is_numeric($value)) {
+            return $value;
+        } else {
+            return "'{$value}'";
+        }
     }
 }
