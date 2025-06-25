@@ -1,6 +1,6 @@
 <?php
 
-class Model {
+abstract class Model {
     protected static $tableName;
     protected static $columns = [];
     protected $values = [];
@@ -25,7 +25,7 @@ class Model {
         $this->values[$key] = $value;
     }
 
-    public static function get($filters = [], $columns = "*") {
+    public static function getObjects($filters = [], $columns = "*") {
         $objects = [];
         $result = static::getResultFromSelect($filters, $columns);
 
