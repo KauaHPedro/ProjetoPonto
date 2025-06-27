@@ -39,6 +39,13 @@ abstract class Model {
         return $objects;
     }
 
+    public static function getOneObject($filters = [], $columns = "*") {
+        $class = get_called_class();
+        $result = static::getResultFromSelect($filters, $columns);
+
+        return $result ? new $class($result[0]) : null;
+    }
+
     public static function getResultFromSelect($filters = [], $columns = "*") {
         $sql = "SELECT {$columns} FROM "
             . static::$tableName
