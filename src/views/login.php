@@ -30,7 +30,7 @@
                 <div class="form-group">
                     <label for="email">E-mail</label>
                     <input type="email" name="email" class="form-control" id="email"
-                    placeholder="Informe seu E-mail" autofocus>
+                    placeholder="Informe seu E-mail" value="<?= $viewData["email"] ?>" autofocus>
 
                 </div>
                 <div class="form-group">
