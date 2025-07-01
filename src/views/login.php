@@ -23,11 +23,10 @@
                 <span class="font-weight-bold mx-1">N'</span>
                 <span class="font-weight-light">Out</span>
                 <i class="icofont-runner-alt-1 ml-2"></i>
-
             </div>
 
             <div class="card-body">
-                <?php include (VIEW_PATH . '/template/messages.php') ?>
+                <?php include (TEMPLATE_PATH . "/messages.php") ?>
                 <div class="form-group">
                     <label for="email">E-mail</label>
                     <input type="email" name="email" class="form-control <?= isset($exception) &&
