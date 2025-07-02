@@ -1,5 +1,3 @@
-
-
 (function () {
     document.getElementById('menu').addEventListener('click', function (e) {
         e.preventDefault();
