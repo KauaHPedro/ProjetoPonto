@@ -23,13 +23,6 @@
     </div>
     <div class="menu-toggle mx-3">
         <i class="icofont-navigation-menu" id="menu"></i>
-        <script>
-            document.getElementById('menu').addEventListener('click', function (e) {
-                e.preventDefault();
-                document.body.classList.toggle("hide-sidebar");
-                window.getSelection().removeAllRanges();
-            })
-        </script>
     </div>
     <div class="spacer"></div>
     <div class="dropdown">
