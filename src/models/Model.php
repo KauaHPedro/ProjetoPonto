@@ -63,15 +63,20 @@ abstract class Model {
 
     public function save() {
         $tableName = static::$tableName;
-        $sql = "INSERT INTO {$tableName} " . " ("
-            . implode(", ", static::$columns) . " ) VALUES (";
-            foreach(static::$columns as $column) {
-                $sql .= static::getFormatedValue($this->$column) . ", ";
-            }
-            $sql[strlen($sql) - 1] = ')';
-            $id = Database::executeNonQuery($sql);
-            $this->$id = $id;
+
+        $columns = array_filter(static::$columns, function($col) {
+            return $col !== 'id';
+        });
+
+        $sql = "INSERT INTO {$tableName} (" . implode(", ", $columns) . ") VALUES (";
+        foreach ($columns as $column) {
+            $sql .= static::getFormatedValue($this->$column) . ",";
+        }
+        $sql[strlen($sql) - 1] = ')';
+        $id = Database::executeNonQuery($sql);
+        $this->id = $id;
     }
+
 
     private static function makeWhere($filters) {
         $sql = "";
