@@ -1,4 +1,8 @@
 <?php
 session_start();
 checkSession();
-loadTemplateView("daily_records", $params = ["user" => "Kauã"]);
+
+$date = (new DateTime())->getTimestamp();
+$today = strftime("%d de %B de %Y", $date);
+
+loadTemplateView("daily_records", $params = ["user" => "Kauã", "today" => $today]);

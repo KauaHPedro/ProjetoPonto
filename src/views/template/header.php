@@ -25,9 +25,9 @@
         <i class="icofont-navigation-menu" id="menu"></i>
     </div>
     <div class="spacer"></div>
-    <div class="dropdown">
+    <div class="dropdown mr-2">
         <div class="dropdown-button">
-            <span class="ml-2">Usuário Mock</span>
+            <span class="ml-2"><?=$_SESSION["user"]->name?></span>
             <i class="icofont-simple-down mx-2"></i>
         </div>
         <div class="dropdown-content">
