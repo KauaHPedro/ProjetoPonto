@@ -34,6 +34,12 @@ class Database {
         $pdo = self::getConnection();
         $stmt = $pdo->prepare($query);
         $stmt->execute($params);
+
+        if (stripos(trim($query), 'insert') === 0) {
+            return $pdo->lastInsertId();
+        }
+
         return $stmt->rowCount();
     }
+
 }
